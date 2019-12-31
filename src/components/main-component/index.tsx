@@ -16,85 +16,87 @@ import LandingPage from '../landing-page';
 import Contact from '../contact';
 
 interface TabPanelProps {
-	children?: React.ReactNode;
-	dir?: string;
-	index: any;
-	value: any;
+    children?: React.ReactNode;
+    dir?: string;
+    index: any;
+    value: any;
 }
 
 function TabPanel({ children, value, index, ...other }: TabPanelProps) {
-	return (
-		<Typography
-			component="div"
-			role="tabpanel"
-			hidden={value !== index}
-			id={`full-width-tabpanel-${index}`}
-			aria-labelledby={`full-width-tab-${index}`}
-			{...other}>
-			{value === index && <Box p={3}>{children}</Box>}
-		</Typography>
-	);
+    return (
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box p={3}>{children}</Box>}
+        </Typography>
+    );
 }
 
 interface HideOnScrollProps {
-	children?: React.ReactElement;
+    children?: React.ReactElement;
 }
 
-function HideOnScroll( { children } : HideOnScrollProps) {
-	const trigger = useScrollTrigger(undefined);
+function HideOnScroll({ children }: HideOnScrollProps) {
+    const trigger = useScrollTrigger(undefined);
 
-	return (
-		<Slide appear={false} direction="down" in={!trigger}>
-			{children}
-		</Slide>
-	);
+    return (
+        <Slide appear={false} direction="down" in={!trigger}>
+            {children}
+        </Slide>
+    );
 }
 
-export default function MainComponent () {
-	const theme = useTheme();
-	
-	const [value, setValue] = useState(0);
+export default function MainComponent() {
+    const theme = useTheme();
 
-	const handleClickMenu = (e: number) => {
-		setValue(e);
-	};
+    const [value, setValue] = useState(0);
 
-	const handleChangeIndex = (index: number) => {
-		setValue(index);
-	};
+    const handleClickMenu = (e: number) => {
+        setValue(e);
+    };
 
-	return (
-		<>
-			<CssBaseline />
-			<HideOnScroll>
-				<AppBar style={{backgroundColor:'#ffffff'}}>
-					<Toolbar className="ToolBarCustom">
-						<Menu onClick={handleClickMenu} value={value}></Menu>
-					</Toolbar>
-				</AppBar>
-			</HideOnScroll>
-			<Toolbar />
-			<Container>
-				<Box my={2}>
-					<SwipeableViews
-						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-						index={value}
-						onChangeIndex={handleChangeIndex}>
-						<TabPanel value={value} index={0} dir={theme.direction}>
-							<LandingPage />
-						</TabPanel>
-						<TabPanel value={value} index={1} dir={theme.direction}>
-							<Us></Us>
-						</TabPanel>
-						<TabPanel value={value} index={2} dir={theme.direction}>
-							<JobsDone />
-						</TabPanel>
-						<TabPanel value={value} index={3} dir={theme.direction}>
-							<Contact />
-						</TabPanel>
-					</SwipeableViews>
-				</Box>
-			</Container>
-		</>
-	);
+    const handleChangeIndex = (index: number) => {
+        setValue(index);
+    };
+
+    return (
+        <>
+            <CssBaseline />
+            <HideOnScroll>
+                <AppBar style={{ backgroundColor: '#ffffff' }}>
+                    <Toolbar className="ToolBarCustom">
+                        <Menu onClick={handleClickMenu} value={value}></Menu>
+                    </Toolbar>
+                </AppBar>
+            </HideOnScroll>
+            <Toolbar />
+            <Container>
+                <Box my={2}>
+                    <SwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={value}
+                        onChangeIndex={handleChangeIndex}
+                    >
+                        <TabPanel value={value} index={0} dir={theme.direction}>
+                            <LandingPage />
+                        </TabPanel>
+                        <TabPanel value={value} index={1} dir={theme.direction}>
+                            <Us></Us>
+                        </TabPanel>
+                        <TabPanel value={value} index={2} dir={theme.direction}>
+                            <JobsDone />
+                        </TabPanel>
+                        <TabPanel value={value} index={3} dir={theme.direction}>
+                            <Contact />
+                        </TabPanel>
+                    </SwipeableViews>
+                </Box>
+            </Container>
+        </>
+    );
 }
