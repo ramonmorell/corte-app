@@ -1,4 +1,4 @@
-import React, { useState, useMemo, CSSProperties} from 'react';
+import React, { useState, CSSProperties} from 'react';
 import content from '../../assets/content/content.json';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 
