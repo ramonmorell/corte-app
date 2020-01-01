@@ -1,16 +1,31 @@
 import React from 'react';
+import content from '../../assets/content/content.json';
+import { IContentElement } from '../interfaces/interfaces';
+import Image from '../utils/image';
 
 export default function Main() {
     return (
         <div>
-            {[...new Array(120)]
-                .map(
-                    () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-                )
-                .join('\n')}
+            {content.landingPage.map(
+                (contentElement: IContentElement, indexContent: number) => {
+                    return (
+                        <div key={indexContent}>
+                            {contentElement.texts.map(
+                                (text: string, index: number) => {
+                                    return <p key={index}>{text}</p>;
+                                }
+                            )}
+                            {contentElement.images.map(
+                                (image: string, index: number) => {
+                                    return (
+                                        <Image key={index} srcName={image} />
+                                    );
+                                }
+                            )}
+                        </div>
+                    );
+                }
+            )}
         </div>
     );
 }
