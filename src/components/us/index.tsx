@@ -1,33 +1,11 @@
-import React, { useState, CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import content from '../../assets/content/content.json';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
-
-interface ImageProps {
-    srcName: string;
-}
-
-function Image({ srcName = '' }: ImageProps) {
-    const [srcImage, setSrcImage] = useState<any>({});
-    import(`../../assets/images/${srcName}.jpg`).then((image: any) => {
-        setSrcImage(image.default);
-    });
-
-    return (
-        <>
-            {srcImage && (
-                <img src={srcImage} alt={srcName} style={{ width: '100%' }} />
-            )}
-        </>
-    );
-}
+import Image from '../utils/image';
+import { IContentElement } from '../interfaces/interfaces';
 
 interface ParagraphProps {
-    paragraph: Paragraph;
-}
-
-interface Paragraph {
-    texts: string[];
-    images: string[];
+    paragraph: IContentElement;
 }
 
 function Paragraph({ paragraph }: ParagraphProps) {
@@ -48,13 +26,13 @@ function Paragraph({ paragraph }: ParagraphProps) {
     return (
         <>
             <div className={classes.root}>
-                {paragraph.texts.map((element: any, index: number) => {
-                    return <p key={index}>{element}</p>;
+                {paragraph.texts.map((text: any, index: number) => {
+                    return <p key={index}>{text}</p>;
                 })}
             </div>
             <div className={classes.root}>
-                {paragraph.images.map((element: any, index: number) => {
-                    return <Image key={index} srcName={element} />;
+                {paragraph.images.map((image: any, index: number) => {
+                    return <Image key={index} srcName={image} />;
                 })}
             </div>
         </>
@@ -76,13 +54,15 @@ export default function Us() {
 
     return (
         <div style={customStyleRow}>
-            {content.nosotros.map((paragraph: Paragraph, index: number) => {
-                return (
-                    <div key={index} style={customStyle}>
-                        <Paragraph paragraph={paragraph}></Paragraph>
-                    </div>
-                );
-            })}
+            {content.nosotros.map(
+                (paragraph: IContentElement, index: number) => {
+                    return (
+                        <div key={index} style={customStyle}>
+                            <Paragraph paragraph={paragraph}></Paragraph>
+                        </div>
+                    );
+                }
+            )}
         </div>
     );
 }
