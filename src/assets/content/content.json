@@ -26,5 +26,23 @@
             ],
             "images": ["servicio1"]
         }
+    ],
+    "jobsDone": [
+        {
+            "texts": [],
+            "images": ["mushu", "mushu", "mushu", "mushu"]
+        },
+        {
+            "texts": [],
+            "images": ["mushu2", "mushu2", "mushu2", "mushu2"]
+        },
+        {
+            "texts": [],
+            "images": ["mushu3", "mushu3", "mushu3", "mushu3"]
+        },
+        {
+            "texts": [],
+            "images": ["mushu4", "mushu4", "mushu4", "mushu4"]
+        }
     ]
 }
