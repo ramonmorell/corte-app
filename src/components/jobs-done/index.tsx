@@ -44,10 +44,10 @@ export default function JobsDone() {
             },
             image: {
                 position: 'relative',
-                height: 50,
+                height: 40,
                 [theme.breakpoints.down('xs')]: {
                     width: '100% !important', // Overrides inline-style
-                    height: 100,
+                    height: 40,
                     marginBottom: '4px'
                 },
                 '&:hover, &$focusVisible': {
@@ -59,7 +59,7 @@ export default function JobsDone() {
                         opacity: 0
                     },
                     '& $imageTitle': {
-                        border: '4px solid currentColor'
+                        border: '3px solid currentColor'
                     }
                 }
             },
@@ -96,9 +96,9 @@ export default function JobsDone() {
             },
             imageTitle: {
                 position: 'relative',
-                padding: `${theme.spacing(2)}px ${theme.spacing(
+                padding: `${theme.spacing(0)}px ${theme.spacing(
                     4
-                )}px ${theme.spacing(1) + 6}px`
+                )}px ${theme.spacing(0)}px`
             },
             imageMarked: {
                 height: 3,
