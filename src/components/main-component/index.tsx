@@ -30,6 +30,7 @@ function TabPanel({ children, value, index, ...other }: TabPanelProps) {
             hidden={value !== index}
             id={`full-width-tabpanel-${index}`}
             aria-labelledby={`full-width-tab-${index}`}
+            style={{ overflow: 'hidden' }}
             {...other}
         >
             {value === index && <Box p={3}>{children}</Box>}

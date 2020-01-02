@@ -1,10 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import Carousel from '../carousel';
+import content from '../../assets/content/content.json';
+import { IContentElement, IButonsJobsDone } from '../interfaces/interfaces';
 
 export default function JobsDone() {
-    const images = useMemo(
+    const butons = useMemo(
         () => [
             {
                 url: './assets/images/servicio1.jpg',
@@ -41,7 +44,7 @@ export default function JobsDone() {
             },
             image: {
                 position: 'relative',
-                height: 100,
+                height: 50,
                 [theme.breakpoints.down('xs')]: {
                     width: '100% !important', // Overrides inline-style
                     height: 100,
@@ -111,44 +114,53 @@ export default function JobsDone() {
 
     const classes = useStyles();
 
-    const handleOnClickButton = useCallback(
-        (e: React.MouseEvent<HTMLElement>) => {},
-        []
+    const [contentToCarousel, setContentToCarousel] = useState<IContentElement>(
+        content.jobsDone[0]
     );
 
+    const handleOnClickButton = useCallback((n: number) => {
+        setContentToCarousel(content.jobsDone[n]);
+    }, []);
+
     return (
-        <div className={classes.root}>
-            {images.map(image => (
-                <ButtonBase
-                    onClick={handleOnClickButton}
-                    focusRipple
-                    key={image.title}
-                    className={classes.image}
-                    focusVisibleClassName={classes.focusVisible}
-                    style={{
-                        width: image.width
-                    }}
-                >
-                    <span
-                        className={classes.imageSrc}
-                        style={{
-                            backgroundImage: `url(${image.url})`
+        <div>
+            <div className={classes.root}>
+                {butons.map((buton: IButonsJobsDone, index: number) => (
+                    <ButtonBase
+                        onClick={() => {
+                            handleOnClickButton(index);
                         }}
-                    />
-                    <span className={classes.imageBackdrop} />
-                    <span className={classes.imageButton}>
-                        <Typography
-                            component="span"
-                            variant="subtitle1"
-                            color="inherit"
-                            className={classes.imageTitle}
-                        >
-                            {image.title}
-                            <span className={classes.imageMarked} />
-                        </Typography>
-                    </span>
-                </ButtonBase>
-            ))}
+                        focusRipple
+                        key={buton.title}
+                        className={classes.image}
+                        focusVisibleClassName={classes.focusVisible}
+                        style={{
+                            width: buton.width
+                        }}
+                    >
+                        <span
+                            className={classes.imageSrc}
+                            style={{
+                                backgroundImage: `url(${buton.url})`
+                            }}
+                        />
+                        <span className={classes.imageBackdrop} />
+                        <span className={classes.imageButton}>
+                            <Typography
+                                component="span"
+                                variant="subtitle1"
+                                color="inherit"
+                                className={classes.imageTitle}
+                            >
+                                {buton.title}
+                                <span className={classes.imageMarked} />
+                            </Typography>
+                        </span>
+                    </ButtonBase>
+                ))}
+            </div>
+            <hr></hr>
+            <Carousel content={contentToCarousel}></Carousel>
         </div>
     );
 }
