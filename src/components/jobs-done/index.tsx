@@ -38,9 +38,12 @@ export default function JobsDone() {
             root: {
                 display: 'flex',
                 flexWrap: 'wrap',
-                minWidth: 300,
+                minWidth: 275,
                 width: '100%',
-                justifyContent: 'space-around'
+                justifyContent: 'space-around',
+                [theme.breakpoints.down('xs')]: {
+                    paddingTop: '15px'
+                }
             },
             image: {
                 position: 'relative',
