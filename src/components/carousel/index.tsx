@@ -3,9 +3,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from '../utils/image';
-import { CarouselProps } from '../interfaces/interfaces';
+import { ICarouselProps } from '../interfaces/interfaces';
 
-export default function Carousel({ content }: CarouselProps) {
+export default function Carousel({ content }: ICarouselProps) {
     const settings = {
         dots: true,
         infinite: true,
