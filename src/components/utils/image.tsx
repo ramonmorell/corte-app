@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageProps } from '../interfaces/interfaces';
 
 export default function Image({ srcName = '' }: ImageProps) {
-    const [srcImage, setSrcImage] = useState<any>({});
-    import(`../../assets/images/${srcName}.jpg`).then((image: any) => {
-        setSrcImage(image.default);
-    });
-
     return (
         <>
-            {srcImage && (
-                <img src={srcImage} alt={srcName} style={{ width: '100%' }} />
-            )}
+            <img
+                src={`${process.env.PUBLIC_URL}/assets/images/${srcName}.jpg`}
+                alt={'%PUBLIC_URL%/' + srcName + '.jpg'}
+                style={{ width: '100%' }}
+            />
         </>
     );
 }

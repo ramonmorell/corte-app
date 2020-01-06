@@ -54,13 +54,10 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 
 export default function MainComponent() {
     const theme = useTheme();
-
     const [value, setValue] = useState(0);
-
     const handleClickMenu = (e: number) => {
         setValue(e);
     };
-
     const handleChangeIndex = (index: number) => {
         setValue(index);
     };
@@ -87,7 +84,7 @@ export default function MainComponent() {
                             <LandingPage />
                         </TabPanel>
                         <TabPanel value={value} index={1} dir={theme.direction}>
-                            <Us></Us>
+                            <Us />
                         </TabPanel>
                         <TabPanel value={value} index={2} dir={theme.direction}>
                             <JobsDone />
