@@ -40,6 +40,7 @@ export default function Main() {
             },
             citation: {
                 textAlign: 'center',
+                fontSize: '30px',
                 color: 'white',
                 backgroundColor: 'black',
                 opacity: 0.8,
@@ -49,7 +50,10 @@ export default function Main() {
                 animationDuration: '3s',
                 animationTimingFunction: 'ease',
                 padding: '15px',
-                borderRadius: '5px'
+                borderRadius: '5px',
+                [theme.breakpoints.down('xs')]: {
+                    fontSize: '15px'
+                }
             },
             '@keyframes worksAnimation': {
                 '0%': {
@@ -133,15 +137,15 @@ export default function Main() {
         <div className={classes.root}>
             <div className={classes.row}>
                 <div className={classes.citation}>
-                    <h1>
+                    <div>
                         <b>
                             SOMOS LO QUE HACEMOS DÍA A DÍA, DE MODO QUE LA
                             EXCELENCIA NO ES UN ACTO SINO UN HÁBITO
                         </b>
-                    </h1>
-                    <h3>
+                    </div>
+                    <div>
                         <i> Aristoteles </i>
-                    </h3>
+                    </div>
                 </div>
             </div>
             <div className={classes.row}>
