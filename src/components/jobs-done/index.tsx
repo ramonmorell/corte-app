@@ -12,22 +12,22 @@ export default function JobsDone() {
         () => [
             {
                 url: './assets/images/servicio1.jpg',
-                title: 'Letras y acabados',
+                title: 'LETRAS Y ACABADOS',
                 width: '24%'
             },
             {
                 url: './assets/images/rotulos.jpg',
-                title: 'Rotulación',
+                title: 'ROTULACIÓN',
                 width: '24%'
             },
             {
                 url: './assets/images/decoracion.jpg',
-                title: 'Decoración eventos',
+                title: 'DECORACIÓN EVENTOS',
                 width: '24%'
             },
             {
                 url: './assets/images/servicio1.jpg',
-                title: 'Otros',
+                title: 'OTROS',
                 width: '24%'
             }
         ],
@@ -122,9 +122,12 @@ export default function JobsDone() {
         content.jobsDone[0]
     );
 
-    const handleOnClickButton = useCallback((n: number) => {
-        setContentToCarousel(content.jobsDone[n]);
-    }, []);
+    const handleOnClickButton = useCallback(
+        (n: number) => {
+            setContentToCarousel(content.jobsDone[n]);
+        },
+        [content]
+    );
 
     return (
         <div>

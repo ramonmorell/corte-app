@@ -1,7 +1,7 @@
 import React from 'react';
-import { ImageProps } from '../interfaces/interfaces';
+import { IImageProps } from '../interfaces/interfaces';
 
-export default function Image({ srcName = '' }: ImageProps) {
+export default function Image({ srcName = '' }: IImageProps) {
     return (
         <>
             <img
