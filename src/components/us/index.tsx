@@ -1,5 +1,5 @@
-import React, { CSSProperties } from 'react';
-import content from '../../assets/content/content.json';
+import React, { CSSProperties, useContext } from 'react';
+import ContentContext from '../../context';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import Image from '../utils/image';
 import { IContentElement } from '../interfaces/interfaces';
@@ -40,6 +40,7 @@ function Paragraph({ paragraph }: ParagraphProps) {
 }
 
 export default function Us() {
+    const content = useContext(ContentContext);
     const customStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',

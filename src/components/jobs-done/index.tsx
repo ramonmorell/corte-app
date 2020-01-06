@@ -1,12 +1,13 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Carousel from '../carousel';
-import content from '../../assets/content/content.json';
 import { IContentElement, IButonsJobsDone } from '../interfaces/interfaces';
+import ContentContext from '../../context';
 
 export default function JobsDone() {
+    const content = useContext(ContentContext);
     const butons = useMemo(
         () => [
             {
@@ -15,12 +16,12 @@ export default function JobsDone() {
                 width: '24%'
             },
             {
-                url: './assets/images/servicio1.jpg',
+                url: './assets/images/rotulos.jpg',
                 title: 'Rotulación',
                 width: '24%'
             },
             {
-                url: './assets/images/servicio1.jpg',
+                url: './assets/images/decoracion.jpg',
                 title: 'Decoración eventos',
                 width: '24%'
             },
