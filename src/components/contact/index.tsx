@@ -2,13 +2,13 @@ import React, { CSSProperties, useContext } from 'react';
 import ContentContext from '../../context';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import Image from '../utils/image';
-import { IContentElement } from '../interfaces/interfaces';
+import {
+    IContent,
+    IContentElement,
+    IParagraphProps
+} from '../interfaces/interfaces';
 
-interface ParagraphProps {
-    paragraph: IContentElement;
-}
-
-function Paragraph({ paragraph }: ParagraphProps) {
+function Paragraph({ paragraph }: IParagraphProps) {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
@@ -45,12 +45,12 @@ function Paragraph({ paragraph }: ParagraphProps) {
     return (
         <>
             <div className={classes.image}>
-                {paragraph.images.map((image: any, index: number) => {
+                {paragraph.images.map((image: string, index: number) => {
                     return <Image key={index} srcName={image} />;
                 })}
             </div>
             <div className={classes.root}>
-                {paragraph.texts.map((text: any, index: number) => {
+                {paragraph.texts.map((text: string, index: number) => {
                     return (
                         <div key={index}>
                             {index === 0 && (
@@ -70,7 +70,7 @@ function Paragraph({ paragraph }: ParagraphProps) {
 }
 
 export default function Contact() {
-    const { contacto: content } = useContext(ContentContext);
+    const { contacto } = useContext<IContent>(ContentContext);
     const customStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
@@ -85,7 +85,7 @@ export default function Contact() {
 
     return (
         <div style={customStyleRow}>
-            {content.map((paragraph: IContentElement, index: number) => {
+            {contacto.map((paragraph: IContentElement, index: number) => {
                 return (
                     <div key={index} style={customStyle}>
                         <Paragraph paragraph={paragraph}></Paragraph>

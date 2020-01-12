@@ -2,13 +2,13 @@ import React, { CSSProperties, useContext } from 'react';
 import ContentContext from '../../context';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import Image from '../utils/image';
-import { IContentElement } from '../interfaces/interfaces';
+import {
+    IContent,
+    IContentElement,
+    IParagraphProps
+} from '../interfaces/interfaces';
 
-interface ParagraphProps {
-    paragraph: IContentElement;
-}
-
-function Paragraph({ paragraph }: ParagraphProps) {
+function Paragraph({ paragraph }: IParagraphProps) {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
@@ -26,12 +26,12 @@ function Paragraph({ paragraph }: ParagraphProps) {
     return (
         <>
             <div className={classes.root}>
-                {paragraph.texts.map((text: any, index: number) => {
+                {paragraph.texts.map((text: string, index: number) => {
                     return <p key={index}>{text}</p>;
                 })}
             </div>
             <div className={classes.root}>
-                {paragraph.images.map((image: any, index: number) => {
+                {paragraph.images.map((image: string, index: number) => {
                     return <Image key={index} srcName={image} />;
                 })}
             </div>
@@ -40,7 +40,7 @@ function Paragraph({ paragraph }: ParagraphProps) {
 }
 
 export default function Us() {
-    const content = useContext(ContentContext);
+    const { nosotros } = useContext<IContent>(ContentContext);
 
     const customStyle: CSSProperties = {
         display: 'flex',
@@ -57,15 +57,13 @@ export default function Us() {
 
     return (
         <div style={customStyleRow}>
-            {content.nosotros.map(
-                (paragraph: IContentElement, index: number) => {
-                    return (
-                        <div key={index} style={customStyle}>
-                            <Paragraph paragraph={paragraph}></Paragraph>
-                        </div>
-                    );
-                }
-            )}
+            {nosotros.map((paragraph: IContentElement, index: number) => {
+                return (
+                    <div key={index} style={customStyle}>
+                        <Paragraph paragraph={paragraph}></Paragraph>
+                    </div>
+                );
+            })}
         </div>
     );
 }

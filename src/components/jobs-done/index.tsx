@@ -2,12 +2,16 @@ import React, { useCallback, useMemo, useState, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import Carousel from '../carousel';
-import { IContentElement, IButonsJobsDone } from '../interfaces/interfaces';
+import Carousel from '../jobs-done-carousel';
+import {
+    IContent,
+    IContentElement,
+    IJobsDoneButons
+} from '../interfaces/interfaces';
 import ContentContext from '../../context';
 
 export default function JobsDone() {
-    const { trabajos } = useContext(ContentContext);
+    const { trabajos } = useContext<IContent>(ContentContext);
     const butons = useMemo(
         () => [
             {
@@ -119,12 +123,12 @@ export default function JobsDone() {
     const classes = useStyles();
 
     const [contentToCarousel, setContentToCarousel] = useState<IContentElement>(
-        trabajos[0]
+        () => (trabajos.length ? trabajos[0] : { texts: [], images: [] })
     );
 
     const handleOnClickButton = useCallback(
-        (n: number) => {
-            setContentToCarousel(trabajos[n]);
+        (indexJobs: number) => {
+            setContentToCarousel(trabajos[indexJobs]);
         },
         [trabajos]
     );
@@ -132,7 +136,7 @@ export default function JobsDone() {
     return (
         <div>
             <div className={classes.root}>
-                {butons.map((buton: IButonsJobsDone, index: number) => (
+                {butons.map((buton: IJobsDoneButons, index: number) => (
                     <ButtonBase
                         onClick={() => {
                             handleOnClickButton(index);
@@ -167,7 +171,9 @@ export default function JobsDone() {
                 ))}
             </div>
             <hr></hr>
-            <Carousel content={contentToCarousel}></Carousel>
+            {trabajos.length && (
+                <Carousel content={contentToCarousel}></Carousel>
+            )}
         </div>
     );
 }

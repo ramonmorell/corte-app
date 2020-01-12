@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import LandingPageCarousel from '../landing-page-carousel';
 import ContentContext from '../../context';
+import { IContent } from '../interfaces/interfaces';
 
-export default function Main() {
-    const { inicio } = useContext(ContentContext);
+export default function LandingPage() {
+    const { inicio } = useContext<IContent>(ContentContext);
 
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
@@ -34,7 +35,11 @@ export default function Main() {
     return (
         <div className={classes.root}>
             <div className={classes.row}>
-                <LandingPageCarousel content={inicio[0]}></LandingPageCarousel>
+                {inicio.length && (
+                    <LandingPageCarousel
+                        content={inicio[0]}
+                    ></LandingPageCarousel>
+                )}
             </div>
         </div>
     );
