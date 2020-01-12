@@ -1,1 +1,5 @@
-
+// Format the arrows of the jobs-done carousel
+.slick-prev:before,
+.slick-next:before {
+    color: black !important;
+}
