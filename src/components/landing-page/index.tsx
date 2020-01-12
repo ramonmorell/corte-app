@@ -4,7 +4,7 @@ import LandingPageCarousel from '../landing-page-carousel';
 import ContentContext from '../../context';
 
 export default function Main() {
-    const { landingPage: contentSection } = useContext(ContentContext);
+    const { inicio } = useContext(ContentContext);
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
@@ -32,9 +32,7 @@ export default function Main() {
     return (
         <div className={classes.root}>
             <div className={classes.row}>
-                <LandingPageCarousel
-                    content={contentSection[0]}
-                ></LandingPageCarousel>
+                <LandingPageCarousel content={inicio[0]}></LandingPageCarousel>
             </div>
         </div>
     );

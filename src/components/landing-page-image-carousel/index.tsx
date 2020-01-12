@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import { ILandingPageCarouselImage } from '../interfaces/interfaces';
 
@@ -37,7 +37,7 @@ export default function LandingPageImageCarousel({
                 backgroundColor: 'black',
                 opacity: 1,
                 position: 'relative',
-                width: '70%',
+                width: '63%',
                 animationName: '$textAnimation',
                 animationDuration: '4s',
                 animationTimingFunction: 'ease',
@@ -46,15 +46,43 @@ export default function LandingPageImageCarousel({
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '20px'
                 }
+            },
+            worksCitation: {
+                fontSize: '25px',
+                [theme.breakpoints.down('xs')]: {
+                    fontSize: '15px'
+                }
             }
         })
     );
 
     const classes = useStyles();
 
+    const [textToShow, setTextToShow] = useState('');
+    const [textAuthorToShow, setTextAuthorToShow] = useState('');
+
+    useEffect(() => {
+        const titleArray = title.split('%AUTOR%');
+        if (titleArray.length >= 1) {
+            setTextToShow(titleArray[0]);
+        }
+        if (titleArray.length === 2) {
+            setTextAuthorToShow(titleArray[1]);
+        } else {
+            setTextAuthorToShow('');
+        }
+    }, [title]);
+
     return (
         <div className={classes.root}>
-            <div className={classes.worksTitle}>{title}</div>
+            <div className={classes.worksTitle}>
+                <div>{textToShow}</div>
+                {textAuthorToShow && (
+                    <div className={classes.worksCitation}>
+                        <i>{textAuthorToShow}</i>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
