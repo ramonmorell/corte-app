@@ -2,11 +2,18 @@
     "inicio": [
         {
             "texts": [
-                "SOMOS LO QUE HACEMOS DÍA A DÍA, DE MODO QUE LA EXCELENCIA NO ES UN ACTO SINO UN HÁBITO%AUTOR%Aristóteles",
-                "ROTULACIÓN",
-                "DECORACIÓN EVENTOS"
+                "SOMOS LO QUE HACEMOS DÍA A DÍA, DE MODO QUE LA EXCELENCIA NO ES UN ACTO SINO UN HÁBITO",
+                "Aristóteles"
             ],
-            "images": ["LandingPageBackgroundImage", "rotulos", "decoracion"]
+            "images": ["LandingPageBackgroundImage"]
+        },
+        {
+            "texts": ["ROTULACIÓN"],
+            "images": ["rotulos"]
+        },
+        {
+            "texts": ["DECORACIÓN EVENTOS"],
+            "images": ["decoracion"]
         }
     ],
     "nosotros": [
@@ -21,19 +28,19 @@
     ],
     "trabajos": [
         {
-            "texts": [],
+            "texts": ["LETRAS Y ACABADOS"],
             "images": ["mushu", "mushu", "mushu", "mushu"]
         },
         {
-            "texts": [],
+            "texts": ["ROTULACIÓN"],
             "images": ["rotulos", "rotulos", "rotulos", "rotulos"]
         },
         {
-            "texts": [],
+            "texts": ["DECORACIÓN EVENTOS"],
             "images": ["decoracion", "decoracion", "decoracion", "decoracion"]
         },
         {
-            "texts": [],
+            "texts": ["OTROS"],
             "images": ["mushu2", "mushu2", "mushu2", "mushu2"]
         }
     ],

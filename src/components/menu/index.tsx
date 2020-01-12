@@ -7,11 +7,11 @@ import {
 } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-interface StyledTabsProps {
-    value: number;
-    onChange: (event: React.ChangeEvent<{}>, newValue: number) => void;
-}
+import {
+    IStyledTabsProps,
+    IStyledTabProps,
+    IPropsMenu
+} from '../interfaces/interfaces';
 
 const StyledTabs = withStyles({
     indicator: {
@@ -23,13 +23,9 @@ const StyledTabs = withStyles({
             backgroundColor: '#000000'
         }
     }
-})((props: StyledTabsProps) => (
+})((props: IStyledTabsProps) => (
     <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />
 ));
-
-interface StyledTabProps {
-    label: string;
-}
 
 const StyledTab = withStyles((theme: Theme) =>
     createStyles({
@@ -44,14 +40,9 @@ const StyledTab = withStyles((theme: Theme) =>
             }
         }
     })
-)((props: StyledTabProps) => <Tab disableRipple {...props} />);
+)((props: IStyledTabProps) => <Tab disableRipple {...props} />);
 
-interface PropsMenu {
-    value: number;
-    onClick: (value: number) => void;
-}
-
-export default function Menu({ onClick, value }: PropsMenu) {
+export default function Menu({ onClick, value }: IPropsMenu) {
     const imageLogo = `${process.env.PUBLIC_URL}/assets/images/logo.jpg`;
 
     const useStyles = makeStyles((theme: Theme) => ({
@@ -66,7 +57,7 @@ export default function Menu({ onClick, value }: PropsMenu) {
 
     const classes = useStyles();
 
-    const a11yProps = useCallback((index: any) => {
+    const a11yProps = useCallback((index: number) => {
         return {
             id: `full-width-tab-${index}`,
             'aria-controls': `full-width-tabpanel-${index}`

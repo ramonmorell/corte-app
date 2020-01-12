@@ -1,69 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Slide from '@material-ui/core/Slide';
-import Menu from '../menu';
-import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@material-ui/core/styles';
-import JobsDone from '../jobs-done';
-import Us from '../us';
+import SwipeableViews from 'react-swipeable-views';
+import HideOnScroll from '../main-component-hide-onscroll';
+import TabPanel from '../main-component-tab-panel';
+import Menu from '../menu';
 import LandingPage from '../landing-page';
+import Us from '../us';
+import JobsDone from '../jobs-done';
 import Contact from '../contact';
-
-interface TabPanelProps {
-    children?: React.ReactNode;
-    dir?: string;
-    index: any;
-    value: any;
-}
-
-function TabPanel({ children, value, index, ...other }: TabPanelProps) {
-    return (
-        <Typography
-            component="div"
-            role="tabpanel"
-            hidden={value !== index}
-            id={`full-width-tabpanel-${index}`}
-            aria-labelledby={`full-width-tab-${index}`}
-            style={{ overflow: 'hidden' }}
-            {...other}
-        >
-            {value === index && <Box p={3}>{children}</Box>}
-        </Typography>
-    );
-}
-
-interface HideOnScrollProps {
-    children?: React.ReactElement;
-}
-
-function HideOnScroll({ children }: HideOnScrollProps) {
-    const trigger = useScrollTrigger(undefined);
-
-    return (
-        <Slide appear={false} direction="down" in={!trigger}>
-            {children}
-        </Slide>
-    );
-}
 
 export default function MainComponent() {
     const theme = useTheme();
 
-    const [value, setValue] = useState(0);
+    const [indexMenuSelected, setIndexMenuSelected] = useState(0);
 
-    const handleClickMenu = (e: number) => {
-        setValue(e);
-    };
+    const handleClickMenu = useCallback(
+        (index: number) => {
+            setIndexMenuSelected(index);
+        },
+        [setIndexMenuSelected]
+    );
 
-    const handleChangeIndex = (index: number) => {
-        setValue(index);
-    };
+    const handleChangeIndex = useCallback(
+        (index: number) => {
+            setIndexMenuSelected(index);
+        },
+        [setIndexMenuSelected]
+    );
 
     return (
         <>
@@ -71,7 +39,10 @@ export default function MainComponent() {
             <HideOnScroll>
                 <AppBar style={{ backgroundColor: '#ffffff' }}>
                     <Toolbar className="ToolBarCustom">
-                        <Menu onClick={handleClickMenu} value={value}></Menu>
+                        <Menu
+                            onClick={handleClickMenu}
+                            value={indexMenuSelected}
+                        ></Menu>
                     </Toolbar>
                 </AppBar>
             </HideOnScroll>
@@ -80,19 +51,35 @@ export default function MainComponent() {
                 <Box my={2}>
                     <SwipeableViews
                         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                        index={value}
+                        index={indexMenuSelected}
                         onChangeIndex={handleChangeIndex}
                     >
-                        <TabPanel value={value} index={0} dir={theme.direction}>
+                        <TabPanel
+                            value={indexMenuSelected}
+                            index={0}
+                            dir={theme.direction}
+                        >
                             <LandingPage />
                         </TabPanel>
-                        <TabPanel value={value} index={1} dir={theme.direction}>
+                        <TabPanel
+                            value={indexMenuSelected}
+                            index={1}
+                            dir={theme.direction}
+                        >
                             <Us />
                         </TabPanel>
-                        <TabPanel value={value} index={2} dir={theme.direction}>
+                        <TabPanel
+                            value={indexMenuSelected}
+                            index={2}
+                            dir={theme.direction}
+                        >
                             <JobsDone />
                         </TabPanel>
-                        <TabPanel value={value} index={3} dir={theme.direction}>
+                        <TabPanel
+                            value={indexMenuSelected}
+                            index={3}
+                            dir={theme.direction}
+                        >
                             <Contact />
                         </TabPanel>
                     </SwipeableViews>
