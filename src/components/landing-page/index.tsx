@@ -1,12 +1,10 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import LandingPageCarousel from '../landing-page-carousel';
+import ContentContext from '../../context';
 
 export default function Main() {
-    const bg = './assets/images/LandingPageBackgroundImage.png';
-    const imagesArray = ['rotulos', 'decoracion'];
-    const titlesArray = ['ROTULACIÓN', 'DECORACIÓN EVENTOS'];
+    const { landingPage: contentSection } = useContext(ContentContext);
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
@@ -14,11 +12,11 @@ export default function Main() {
                 alignItems: 'stretch',
                 flexDirection: 'column',
                 justifyContent: 'space-around',
-                backgroundImage: `url(${bg})`,
                 width: '100%',
                 height: '600px',
                 [theme.breakpoints.down('xs')]: {
-                    paddingTop: '15px'
+                    paddingTop: '50px',
+                    height: '500px'
                 }
             },
             row: {
@@ -26,33 +24,6 @@ export default function Main() {
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 flexWrap: 'wrap'
-            },
-            '@keyframes citationAnimation': {
-                from: {
-                    top: '100px',
-                    opacity: 0
-                },
-                to: {
-                    top: '0px',
-                    opacity: 0.8
-                }
-            },
-            citation: {
-                textAlign: 'center',
-                fontSize: '30px',
-                color: 'white',
-                backgroundColor: 'black',
-                opacity: 0.8,
-                position: 'relative',
-                width: '70%',
-                animationName: '$citationAnimation',
-                animationDuration: '3s',
-                animationTimingFunction: 'ease',
-                padding: '15px',
-                borderRadius: '5px',
-                [theme.breakpoints.down('xs')]: {
-                    fontSize: '15px'
-                }
             }
         })
     );
@@ -61,22 +32,8 @@ export default function Main() {
     return (
         <div className={classes.root}>
             <div className={classes.row}>
-                <div className={classes.citation}>
-                    <div>
-                        <b>
-                            SOMOS LO QUE HACEMOS DÍA A DÍA, DE MODO QUE LA
-                            EXCELENCIA NO ES UN ACTO SINO UN HÁBITO
-                        </b>
-                    </div>
-                    <div>
-                        <i> Aristoteles </i>
-                    </div>
-                </div>
-            </div>
-            <div className={classes.row}>
                 <LandingPageCarousel
-                    images={imagesArray}
-                    titles={titlesArray}
+                    content={contentSection[0]}
                 ></LandingPageCarousel>
             </div>
         </div>

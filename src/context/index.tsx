@@ -3,7 +3,8 @@ import React from 'react';
 const defaultValue = {
     landingPage: [],
     nosotros: [],
-    jobsDone: []
+    jobsDone: [],
+    contacto: []
 };
 
 const ContentContext = React.createContext(defaultValue);
