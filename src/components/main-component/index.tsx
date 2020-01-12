@@ -54,10 +54,13 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 
 export default function MainComponent() {
     const theme = useTheme();
+
     const [value, setValue] = useState(0);
+
     const handleClickMenu = (e: number) => {
         setValue(e);
     };
+
     const handleChangeIndex = (index: number) => {
         setValue(index);
     };

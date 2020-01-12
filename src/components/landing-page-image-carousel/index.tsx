@@ -59,6 +59,7 @@ export default function LandingPageImageCarousel({
     const classes = useStyles();
 
     const [textToShow, setTextToShow] = useState('');
+
     const [textAuthorToShow, setTextAuthorToShow] = useState('');
 
     useEffect(() => {

@@ -45,42 +45,28 @@ export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
             }
         })
     );
+
     const classes = useStyles();
-
-    const [imageShow, setImageShow] = useState(true);
-
-    // useEffect(() => {
-    //     if (!imageShow) {
-    //         const timeout = setTimeout(() => {
-    //             setImageShow(true);
-    //         }, 0);
-    //         return () => clearTimeout(timeout);
-    //     }
-    // }, [imageShow]);
 
     const [imageCounter, setImageCounter] = useState(0);
 
     useEffect(() => {
-        if (imageShow) {
-            const interval = setInterval(() => {
-                if (imageCounter < content.images.length - 1) {
-                    setImageCounter(imageCounter + 1);
-                } else {
-                    setImageCounter(0);
-                }
-            }, 8000);
-            return () => clearInterval(interval);
-        }
-    }, [imageCounter, content.images.length, imageShow]);
+        const interval = setInterval(() => {
+            if (imageCounter < content.images.length - 1) {
+                setImageCounter(imageCounter + 1);
+            } else {
+                setImageCounter(0);
+            }
+        }, 8000);
+        return () => clearInterval(interval);
+    }, [imageCounter, content.images.length]);
 
     return (
         <div className={classes.root}>
-            {imageShow && (
-                <LandingPageImageCarousel
-                    srcName={content.images[imageCounter]}
-                    title={content.texts[imageCounter]}
-                ></LandingPageImageCarousel>
-            )}
+            <LandingPageImageCarousel
+                srcName={content.images[imageCounter]}
+                title={content.texts[imageCounter]}
+            ></LandingPageImageCarousel>
         </div>
     );
 }
