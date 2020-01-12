@@ -7,7 +7,7 @@ import { IContentElement, IButonsJobsDone } from '../interfaces/interfaces';
 import ContentContext from '../../context';
 
 export default function JobsDone() {
-    const content = useContext(ContentContext);
+    const { trabajos } = useContext(ContentContext);
     const butons = useMemo(
         () => [
             {
@@ -119,14 +119,14 @@ export default function JobsDone() {
     const classes = useStyles();
 
     const [contentToCarousel, setContentToCarousel] = useState<IContentElement>(
-        content.jobsDone[0]
+        trabajos[0]
     );
 
     const handleOnClickButton = useCallback(
         (n: number) => {
-            setContentToCarousel(content.jobsDone[n]);
+            setContentToCarousel(trabajos[n]);
         },
-        [content]
+        [trabajos]
     );
 
     return (

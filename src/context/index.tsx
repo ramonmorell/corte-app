@@ -1,9 +1,9 @@
 import React from 'react';
 
 const defaultValue = {
-    landingPage: [],
+    inicio: [],
     nosotros: [],
-    jobsDone: [],
+    trabajos: [],
     contacto: []
 };
 

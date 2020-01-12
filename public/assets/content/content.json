@@ -1,5 +1,5 @@
 {
-    "landingPage": [
+    "inicio": [
         {
             "texts": [
                 "SOMOS LO QUE HACEMOS DÍA A DÍA, DE MODO QUE LA EXCELENCIA NO ES UN ACTO SINO UN HÁBITO",
@@ -19,7 +19,7 @@
             "images": ["aboutUs"]
         }
     ],
-    "jobsDone": [
+    "trabajos": [
         {
             "texts": [],
             "images": ["mushu", "mushu", "mushu", "mushu"]
