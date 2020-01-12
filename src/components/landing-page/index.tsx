@@ -5,6 +5,7 @@ import ContentContext from '../../context';
 
 export default function Main() {
     const { inicio } = useContext(ContentContext);
+
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             root: {
@@ -27,6 +28,7 @@ export default function Main() {
             }
         })
     );
+
     const classes = useStyles();
 
     return (

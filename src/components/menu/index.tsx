@@ -7,7 +7,6 @@ import {
 } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-// import image from '../../assets/images/portada1.jpg';
 
 interface StyledTabsProps {
     value: number;
@@ -53,7 +52,8 @@ interface PropsMenu {
 }
 
 export default function Menu({ onClick, value }: PropsMenu) {
-    const image = `${process.env.PUBLIC_URL}/assets/images/portada1.jpg`;
+    const imageLogo = `${process.env.PUBLIC_URL}/assets/images/logo.jpg`;
+
     const useStyles = makeStyles((theme: Theme) => ({
         root: {
             display: 'flex',
@@ -83,7 +83,7 @@ export default function Menu({ onClick, value }: PropsMenu) {
     return (
         <div className={classes.root}>
             <img
-                src={image}
+                src={imageLogo}
                 alt="Portada"
                 style={{ height: '56px', paddingRight: '20px' }}
             />

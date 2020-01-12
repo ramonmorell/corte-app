@@ -39,6 +39,7 @@ function Paragraph({ paragraph }: ParagraphProps) {
             }
         })
     );
+
     const classes = useStyles();
 
     return (
@@ -49,14 +50,18 @@ function Paragraph({ paragraph }: ParagraphProps) {
                 })}
             </div>
             <div className={classes.root}>
-                <p className={classes.textsTitle}>
-                    <b>LUCIANO TORRES S.L.</b>
-                </p>
                 {paragraph.texts.map((text: any, index: number) => {
                     return (
-                        <p className={classes.texts} key={index}>
-                            {text}
-                        </p>
+                        <div key={index}>
+                            {index === 0 && (
+                                <p className={classes.textsTitle}>
+                                    <b>{text}</b>
+                                </p>
+                            )}
+                            {index > 0 && (
+                                <p className={classes.texts}>{text}</p>
+                            )}
+                        </div>
                     );
                 })}
             </div>

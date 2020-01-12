@@ -41,11 +41,13 @@ function Paragraph({ paragraph }: ParagraphProps) {
 
 export default function Us() {
     const content = useContext(ContentContext);
+
     const customStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between'
     };
+
     const customStyleRow: CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
