@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
-import { ILandingPageCarousel, IImageCarousel } from '../interfaces/interfaces';
+import { ILandingPageCarousel } from '../interfaces/interfaces';
+import LandingPageImageCarousel from '../landing-page-image-carousel';
 
-export default function LandingPageCarousel({
-    images,
-    titles
-}: ILandingPageCarousel) {
+export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             '@keyframes citationAnimation': {
@@ -34,8 +32,8 @@ export default function LandingPageCarousel({
                 color: 'white',
                 opacity: 0.8,
                 position: 'relative',
-                width: '70%',
-                height: '300px',
+                width: '100%',
+                height: '600px',
                 animationName: '$citationAnimation',
                 animationDuration: '10s',
                 animationTimingFunction: 'ease',
@@ -49,70 +47,40 @@ export default function LandingPageCarousel({
     );
     const classes = useStyles();
 
-    const [imageShow, setImageShow] = useState(false);
+    const [imageShow, setImageShow] = useState(true);
 
-    useEffect(() => {
-        if (!imageShow) {
-            const timeout = setTimeout(() => {
-                setImageShow(true);
-            }, 3000);
-            return () => clearTimeout(timeout);
-        }
-    }, [imageShow]);
+    // useEffect(() => {
+    //     if (!imageShow) {
+    //         const timeout = setTimeout(() => {
+    //             setImageShow(true);
+    //         }, 0);
+    //         return () => clearTimeout(timeout);
+    //     }
+    // }, [imageShow]);
 
     const [imageCounter, setImageCounter] = useState(0);
 
     useEffect(() => {
         if (imageShow) {
             const interval = setInterval(() => {
-                if (imageCounter < images.length - 1) {
+                if (imageCounter < content.images.length - 1) {
                     setImageCounter(imageCounter + 1);
                 } else {
                     setImageCounter(0);
                 }
-            }, 10000);
+            }, 8000);
             return () => clearInterval(interval);
         }
-    }, [imageCounter, images.length, imageShow]);
+    }, [imageCounter, content.images.length, imageShow]);
 
     return (
         <div className={classes.root}>
             {imageShow && (
-                <ImageCarousel
-                    srcName={images[imageCounter]}
-                    title={titles[imageCounter]}
-                ></ImageCarousel>
+                <LandingPageImageCarousel
+                    srcName={content.images[imageCounter]}
+                    title={content.texts[imageCounter]}
+                ></LandingPageImageCarousel>
             )}
-        </div>
-    );
-}
-
-function ImageCarousel({ srcName, title }: IImageCarousel) {
-    const useStyles = makeStyles((theme: Theme) =>
-        createStyles({
-            root: {
-                backgroundImage: `url(./assets/images/${srcName}.jpg)`,
-                display: 'block',
-                width: '100%',
-                height: '100%',
-                backgroundSize: 'cover',
-                paddingTop: '20px'
-            },
-            worksTitle: {
-                textAlign: 'center',
-                color: 'white',
-                backgroundColor: 'black',
-                width: '80%',
-                opacity: 0.8
-            }
-        })
-    );
-
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root}>
-            <div className={classes.worksTitle}>{title}</div>
         </div>
     );
 }

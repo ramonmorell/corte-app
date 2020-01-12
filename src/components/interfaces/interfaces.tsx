@@ -22,12 +22,11 @@ export interface IButonsJobsDone {
     width: string;
 }
 
-export interface IImageCarousel {
+export interface ILandingPageCarouselImage {
     srcName: string;
     title: string;
 }
 
 export interface ILandingPageCarousel {
-    images: string[];
-    titles: string[];
+    content: IContentElement;
 }
