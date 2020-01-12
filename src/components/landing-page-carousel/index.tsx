@@ -30,7 +30,7 @@ export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
                 textAlign: 'center',
                 fontSize: '30px',
                 color: 'white',
-                opacity: 1,
+                opacity: 0,
                 position: 'relative',
                 width: '100%',
                 height: '600px',
@@ -52,20 +52,21 @@ export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (imageCounter < content.images.length - 1) {
+            if (imageCounter < content.length - 1) {
                 setImageCounter(imageCounter + 1);
             } else {
                 setImageCounter(0);
             }
         }, 8000);
         return () => clearInterval(interval);
-    }, [imageCounter, content.images.length]);
+    }, [imageCounter, content]);
 
     return (
         <div className={classes.root}>
             <LandingPageImageCarousel
-                srcName={content.images[imageCounter]}
-                title={content.texts[imageCounter]}
+                srcName={content[imageCounter].images[0]}
+                title={content[imageCounter].texts[0]}
+                extraText={content[imageCounter].texts[1]}
             ></LandingPageImageCarousel>
         </div>
     );

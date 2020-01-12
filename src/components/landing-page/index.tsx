@@ -36,9 +36,7 @@ export default function LandingPage() {
         <div className={classes.root}>
             <div className={classes.row}>
                 {inicio.length && (
-                    <LandingPageCarousel
-                        content={inicio[0]}
-                    ></LandingPageCarousel>
+                    <LandingPageCarousel content={inicio}></LandingPageCarousel>
                 )}
             </div>
         </div>

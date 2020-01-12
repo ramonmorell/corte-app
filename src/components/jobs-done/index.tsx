@@ -12,29 +12,14 @@ import ContentContext from '../../context';
 
 export default function JobsDone() {
     const { trabajos } = useContext<IContent>(ContentContext);
+
     const butons = useMemo(
-        () => [
-            {
-                url: './assets/images/servicio1.jpg',
-                title: 'LETRAS Y ACABADOS',
-                width: '24%'
-            },
-            {
-                url: './assets/images/rotulos.jpg',
-                title: 'ROTULACIÓN',
-                width: '24%'
-            },
-            {
-                url: './assets/images/decoracion.jpg',
-                title: 'DECORACIÓN EVENTOS',
-                width: '24%'
-            },
-            {
-                url: './assets/images/servicio1.jpg',
-                title: 'OTROS',
-                width: '24%'
-            }
-        ],
+        () =>
+            trabajos.map((workElement: IContentElement) => ({
+                url: `./assets/images/${workElement.images[0]}.jpg`,
+                title: `${workElement.texts[0]}`,
+                width: `${100 / trabajos.length - 1}%`
+            })),
         []
     );
 

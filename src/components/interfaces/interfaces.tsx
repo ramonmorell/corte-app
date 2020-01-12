@@ -52,10 +52,11 @@ export interface IJobsDoneButons {
 export interface ILandingPageCarouselImage {
     srcName: string;
     title: string;
+    extraText: string;
 }
 
 export interface ILandingPageCarousel {
-    content: IContentElement;
+    content: IContentElement[];
 }
 
 export interface IParagraphProps {

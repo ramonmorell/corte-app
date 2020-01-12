@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import { ILandingPageCarouselImage } from '../interfaces/interfaces';
 
 export default function LandingPageImageCarousel({
     srcName,
-    title
+    title,
+    extraText = ''
 }: ILandingPageCarouselImage) {
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
@@ -58,29 +59,13 @@ export default function LandingPageImageCarousel({
 
     const classes = useStyles();
 
-    const [textToShow, setTextToShow] = useState('');
-
-    const [textAuthorToShow, setTextAuthorToShow] = useState('');
-
-    useEffect(() => {
-        const titleArray = title.split('%AUTOR%');
-        if (titleArray.length >= 1) {
-            setTextToShow(titleArray[0]);
-        }
-        if (titleArray.length === 2) {
-            setTextAuthorToShow(titleArray[1]);
-        } else {
-            setTextAuthorToShow('');
-        }
-    }, [title]);
-
     return (
         <div className={classes.root}>
             <div className={classes.worksTitle}>
-                <div>{textToShow}</div>
-                {textAuthorToShow && (
+                <div>{title}</div>
+                {extraText && (
                     <div className={classes.worksCitation}>
-                        <i>{textAuthorToShow}</i>
+                        <i>{extraText}</i>
                     </div>
                 )}
             </div>
