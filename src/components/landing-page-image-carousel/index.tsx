@@ -26,16 +26,16 @@ export default function LandingPageImageCarousel({
                 },
                 to: {
                     top: '25px',
-                    opacity: 1
+                    opacity: 0.8
                 }
             },
             worksTitle: {
                 top: '25px',
+                opacity: 0.8,
                 textAlign: 'center',
                 fontSize: '35px',
                 color: 'white',
                 backgroundColor: 'black',
-                opacity: 1,
                 position: 'relative',
                 width: '63%',
                 animationName: '$textAnimation',

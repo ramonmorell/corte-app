@@ -14,10 +14,10 @@ export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
                     opacity: 0
                 },
                 '20%': {
-                    opacity: 0.8
+                    opacity: 1
                 },
                 '90%': {
-                    opacity: 0.8
+                    opacity: 1
                 },
                 '98%': {
                     opacity: 0
@@ -30,12 +30,12 @@ export default function LandingPageCarousel({ content }: ILandingPageCarousel) {
                 textAlign: 'center',
                 fontSize: '30px',
                 color: 'white',
-                opacity: 0.8,
+                opacity: 1,
                 position: 'relative',
                 width: '100%',
                 height: '600px',
                 animationName: '$citationAnimation',
-                animationDuration: '10s',
+                animationDuration: '8s',
                 animationTimingFunction: 'ease',
                 borderRadius: '5px',
                 [theme.breakpoints.down('xs')]: {
