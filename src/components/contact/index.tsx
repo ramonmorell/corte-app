@@ -7,6 +7,7 @@ import {
     IContentElement,
     IParagraphProps
 } from '../interfaces/interfaces';
+import Container from '@material-ui/core/Container';
 
 function Paragraph({ paragraph }: IParagraphProps) {
     const useStyles = makeStyles((theme: Theme) =>
@@ -84,14 +85,16 @@ export default function Contact() {
     };
 
     return (
-        <div style={customStyleRow}>
-            {contacto.map((paragraph: IContentElement, index: number) => {
-                return (
-                    <div key={index} style={customStyle}>
-                        <Paragraph paragraph={paragraph}></Paragraph>
-                    </div>
-                );
-            })}
-        </div>
+        <Container>
+            <div style={customStyleRow}>
+                {contacto.map((paragraph: IContentElement, index: number) => {
+                    return (
+                        <div key={index} style={customStyle}>
+                            <Paragraph paragraph={paragraph}></Paragraph>
+                        </div>
+                    );
+                })}
+            </div>
+        </Container>
     );
 }

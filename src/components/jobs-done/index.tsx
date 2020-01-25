@@ -9,6 +9,7 @@ import {
     IJobsDoneButons
 } from '../interfaces/interfaces';
 import ContentContext from '../../context';
+import Container from '@material-ui/core/Container';
 
 export default function JobsDone() {
     const { trabajos } = useContext<IContent>(ContentContext);
@@ -137,7 +138,7 @@ export default function JobsDone() {
     );
 
     return (
-        <div>
+        <Container>
             <div className={classes.root}>
                 {butons.map((buton: IJobsDoneButons, index: number) => (
                     <ButtonBase
@@ -177,6 +178,6 @@ export default function JobsDone() {
             {trabajos.length && (
                 <Carousel content={contentToCarousel}></Carousel>
             )}
-        </div>
+        </Container>
     );
 }
