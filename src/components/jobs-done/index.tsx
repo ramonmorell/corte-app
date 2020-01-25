@@ -35,9 +35,27 @@ export default function JobsDone() {
                     paddingTop: '15px'
                 }
             },
+            '@keyframes buttonAnimation': {
+                '10%': {
+                    opacity: 1
+                },
+                '12%': {
+                    opacity: 0.8
+                },
+                '14%': {
+                    opacity: 1
+                },
+                '100%': {
+                    opacity: 1
+                }
+            },
             image: {
                 position: 'relative',
                 height: 40,
+                animationName: '$buttonAnimation',
+                animationDuration: '9s',
+                animationTimingFunction: 'linear',
+                animationIterationCount: 'infinite',
                 [theme.breakpoints.down('xs')]: {
                     width: '100% !important', // Overrides inline-style
                     height: 40,

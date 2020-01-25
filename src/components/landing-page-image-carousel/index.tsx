@@ -15,10 +15,7 @@ export default function LandingPageImageCarousel({
                 width: '100%',
                 height: '100%',
                 backgroundSize: 'cover',
-                paddingTop: '20px',
-                [theme.breakpoints.down('xs')]: {
-                    fontSize: '40px'
-                }
+                paddingTop: '20px'
             },
             '@keyframes textAnimation': {
                 from: {
@@ -30,11 +27,10 @@ export default function LandingPageImageCarousel({
                     opacity: 0.8
                 }
             },
-            worksTitle: {
+            worksTitleBox: {
                 top: '25px',
                 opacity: 0.8,
                 textAlign: 'center',
-                fontSize: '35px',
                 color: 'white',
                 backgroundColor: 'black',
                 position: 'relative',
@@ -42,16 +38,29 @@ export default function LandingPageImageCarousel({
                 animationName: '$textAnimation',
                 animationDuration: '4s',
                 animationTimingFunction: 'ease',
-                padding: '15px',
                 borderRadius: '0px 20px 20px 0px',
+                [theme.breakpoints.down('xs')]: {
+                    width: '75%',
+                    fontSize: '20px'
+                }
+            },
+            worksCitationtext: {
+                fontSize: '45px',
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '20px'
                 }
             },
-            worksCitation: {
+            worksCitationExtra: {
                 fontSize: '25px',
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '15px'
+                }
+            },
+            worksTitleText: {
+                lineHeight: 1.2,
+                fontSize: '75px',
+                [theme.breakpoints.down('xs')]: {
+                    fontSize: '30px'
                 }
             }
         })
@@ -61,10 +70,16 @@ export default function LandingPageImageCarousel({
 
     return (
         <div className={classes.root}>
-            <div className={classes.worksTitle}>
-                <div>{title}</div>
+            <div className={classes.worksTitleBox}>
+                <div>
+                    {extraText ? (
+                        <b className={classes.worksCitationtext}>{title}</b>
+                    ) : (
+                        <b className={classes.worksTitleText}>{title}</b>
+                    )}
+                </div>
                 {extraText && (
-                    <div className={classes.worksCitation}>
+                    <div className={classes.worksCitationExtra}>
                         <i>{extraText}</i>
                     </div>
                 )}

@@ -52,6 +52,11 @@ export default function Menu({ onClick, value }: IPropsMenu) {
             flexDirection: 'row',
             alignContent: 'center',
             backgroundColor: '#ffffff'
+        },
+        logo: {
+            height: '50px',
+            paddingRight: '20px',
+            paddingTop: '5px'
         }
     }));
 
@@ -73,17 +78,17 @@ export default function Menu({ onClick, value }: IPropsMenu) {
 
     return (
         <div className={classes.root}>
-            <img
-                src={imageLogo}
-                alt="Portada"
-                style={{ height: '56px', paddingRight: '20px' }}
-            />
-            <StyledTabs value={value} onChange={handleChange}>
-                <StyledTab label="INICIO" {...a11yProps(0)} />
-                <StyledTab label="NOSOTROS" {...a11yProps(1)} />
-                <StyledTab label="TRABAJOS" {...a11yProps(2)} />
-                <StyledTab label="CONTACTO" {...a11yProps(3)} />
-            </StyledTabs>
+            <div>
+                <img src={imageLogo} alt="Portada" className={classes.logo} />
+            </div>
+            <div>
+                <StyledTabs value={value} onChange={handleChange}>
+                    <StyledTab label="INICIO" {...a11yProps(0)} />
+                    <StyledTab label="NOSOTROS" {...a11yProps(1)} />
+                    <StyledTab label="TRABAJOS" {...a11yProps(2)} />
+                    <StyledTab label="CONTACTO" {...a11yProps(3)} />
+                </StyledTabs>
+            </div>
         </div>
     );
 }
