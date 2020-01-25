@@ -8,6 +8,7 @@ import {
     IParagraphProps
 } from '../interfaces/interfaces';
 import Container from '@material-ui/core/Container';
+import sendMail from '../../email';
 
 function Paragraph({ paragraph }: IParagraphProps) {
     const useStyles = makeStyles((theme: Theme) =>
@@ -84,6 +85,14 @@ export default function Contact() {
         alignContent: 'space-between'
     };
 
+    const actionForm = (e: any): any => {
+        e.preventDefault();
+        console.log('HOLA');
+        sendMail('HOLAAAA').then((res: any) => {
+            console.log(res);
+        });
+    };
+
     return (
         <Container>
             <div style={customStyleRow}>
@@ -94,6 +103,27 @@ export default function Contact() {
                         </div>
                     );
                 })}
+            </div>
+            <div style={customStyleRow}>
+                <form>
+                    <input
+                        type="hidden"
+                        name="subject"
+                        placeholder="Subject"
+                        value="PRUEBAS"
+                    />
+                    <textarea name="text" placeholder="Message"></textarea>
+                    <input
+                        type="hidden"
+                        name="access_token"
+                        value="w2dzrpbdoqo865q92ylh2wwg"
+                    />
+
+                    <input type="hidden" name="success_url" value="." />
+                    <input type="hidden" name="error_url" value=".?err=1" />
+
+                    <button onClick={actionForm}> ENVIAR </button>
+                </form>
             </div>
         </Container>
     );
