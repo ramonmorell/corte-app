@@ -47,44 +47,44 @@ export default function MainComponent() {
                 </AppBar>
             </HideOnScroll>
             <Toolbar />
-            <Container>
-                <Box my={2}>
-                    <SwipeableViews
-                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                        index={indexMenuSelected}
-                        onChangeIndex={handleChangeIndex}
+            {/* <Container> */}
+            <Box my={2}>
+                <SwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={indexMenuSelected}
+                    onChangeIndex={handleChangeIndex}
+                >
+                    <TabPanel
+                        value={indexMenuSelected}
+                        index={0}
+                        dir={theme.direction}
                     >
-                        <TabPanel
-                            value={indexMenuSelected}
-                            index={0}
-                            dir={theme.direction}
-                        >
-                            <LandingPage />
-                        </TabPanel>
-                        <TabPanel
-                            value={indexMenuSelected}
-                            index={1}
-                            dir={theme.direction}
-                        >
-                            <Us />
-                        </TabPanel>
-                        <TabPanel
-                            value={indexMenuSelected}
-                            index={2}
-                            dir={theme.direction}
-                        >
-                            <JobsDone />
-                        </TabPanel>
-                        <TabPanel
-                            value={indexMenuSelected}
-                            index={3}
-                            dir={theme.direction}
-                        >
-                            <Contact />
-                        </TabPanel>
-                    </SwipeableViews>
-                </Box>
-            </Container>
+                        <LandingPage />
+                    </TabPanel>
+                    <TabPanel
+                        value={indexMenuSelected}
+                        index={1}
+                        dir={theme.direction}
+                    >
+                        <Us />
+                    </TabPanel>
+                    <TabPanel
+                        value={indexMenuSelected}
+                        index={2}
+                        dir={theme.direction}
+                    >
+                        <JobsDone />
+                    </TabPanel>
+                    <TabPanel
+                        value={indexMenuSelected}
+                        index={3}
+                        dir={theme.direction}
+                    >
+                        <Contact />
+                    </TabPanel>
+                </SwipeableViews>
+            </Box>
+            {/* </Container> */}
         </>
     );
 }
