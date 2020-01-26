@@ -62,3 +62,20 @@ export interface ILandingPageCarousel {
 export interface IParagraphProps {
     paragraph: IContentElement;
 }
+
+export interface ContactFormProps {
+    formCallBack: (show: boolean, error: boolean, msg: string) => void;
+}
+
+export interface FormData {
+    name: string;
+    telephone: string;
+    email: string;
+    msg: string;
+}
+
+export interface FormError {
+    show: boolean;
+    error: boolean;
+    msg: string;
+}

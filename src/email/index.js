@@ -1,11 +1,33 @@
-const sendMail = () => {
-    return window.Email.send({
-        SecureToken: 'e040beee-6e35-45a5-b2cf-ac0e563bc502',
-        To: 'ramonmgomis@gmail.com',
-        From: 'you@isp.com',
-        Subject: 'This is the subject',
-        Body: 'And this is the body'
-    });
+const sendMail = msg => {
+    let data_js = {
+        access_token: 'w2dzrpbdoqo865q92ylh2wwg',
+        subject: 'Contacto',
+        text: msg
+    };
+
+    const toParams = data_js => {
+        let data = [];
+
+        for (var key in data_js) {
+            data.push(
+                encodeURIComponent(key) + '=' + encodeURIComponent(data_js[key])
+            );
+        }
+
+        return data.join('&');
+    };
+
+    const params = toParams(data_js);
+
+    const init = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
+    };
+
+    return fetch('https://postmail.invotes.com/send', init);
 };
 
 export default sendMail;
