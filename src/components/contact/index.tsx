@@ -88,13 +88,13 @@ export default function Contact() {
                 flexWrap: 'wrap'
             },
             formCaption: {
-                width: '49%',
+                width: '59%',
                 [theme.breakpoints.down('xs')]: {
                     width: '100%'
                 }
             },
             formContainer: {
-                width: '50%',
+                width: '40%',
                 [theme.breakpoints.down('xs')]: {
                     width: '100%'
                 }
