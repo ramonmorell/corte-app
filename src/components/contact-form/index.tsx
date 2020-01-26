@@ -120,27 +120,25 @@ export default function ContactForm({ formCallBack }: ContactFormProps) {
                 const msg = createmesg(formData);
                 setDisableClean(true);
                 setDisableSubmit(true);
-                sendMail(msg)
-                    .then(() => {
-                        formCallBack(
-                            true,
-                            false,
-                            'Mensaje enviado correctamente!'
-                        );
-                    })
-                    .catch((err: any) => {
+                sendMail(msg).then((res: any) => {
+                    if (res.status !== 200) {
                         formCallBack(
                             true,
                             true,
                             'Error al enviar el mesaje...'
                         );
-                    })
-                    .finally(() => {
-                        setTimeout(() => {
-                            setDisableClean(false);
-                            setDisableSubmit(false);
-                        }, 1000);
-                    });
+                    } else {
+                        formCallBack(
+                            true,
+                            false,
+                            'Mensaje enviado correctamente!'
+                        );
+                    }
+                    setTimeout(() => {
+                        setDisableClean(false);
+                        setDisableSubmit(false);
+                    }, 1000);
+                });
             }
         },
         [formData, formCallBack, validateForm]

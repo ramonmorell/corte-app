@@ -25,7 +25,7 @@ function Paragraph({ paragraph }: IParagraphProps) {
                 }
             },
             image: {
-                width: '55%',
+                width: '42%',
                 [theme.breakpoints.down('xs')]: {
                     width: '100% !important',
                     marginBottom: '4px'
