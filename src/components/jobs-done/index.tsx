@@ -21,7 +21,7 @@ export default function JobsDone() {
                 title: `${workElement.texts[0]}`,
                 width: `${100 / trabajos.length - 1}%`
             })),
-        []
+        [trabajos]
     );
 
     const useStyles = makeStyles((theme: Theme) =>

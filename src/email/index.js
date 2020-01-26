@@ -7,6 +7,7 @@ const sendMail = msg => {
 
     const toParams = data_js => {
         let data = [];
+
         for (var key in data_js) {
             data.push(
                 encodeURIComponent(key) + '=' + encodeURIComponent(data_js[key])
