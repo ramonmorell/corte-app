@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core/styles';
 import sendMail from '../../email';
 import { TextField, Button } from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
+import { lightGreen, green } from '@material-ui/core/colors';
 import { ContactFormProps, FormData } from '../interfaces/interfaces';
 import SendIcon from '@material-ui/icons/Send';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -44,9 +44,24 @@ export default function ContactForm({ formCallBack }: ContactFormProps) {
         })
     );
 
+    const sucessIntention = {
+        light: '#35cc65',
+        main: '#47b361',
+        dark: '#37ad5a',
+        contrastText: '#fff'
+    };
+
+    const cleanIntention = {
+        light: '#d64f4f',
+        main: '#db2e2e',
+        dark: '#911111',
+        contrastText: '#fff'
+    };
+
     const themeSubmit = createMuiTheme({
         palette: {
-            primary: green
+            primary: sucessIntention,
+            secondary: cleanIntention
         }
     });
 
