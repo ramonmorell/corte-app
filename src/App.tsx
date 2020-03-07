@@ -3,6 +3,7 @@ import './App.scss';
 import MainComponent from './components/main-component';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import lightblue from '@material-ui/core/colors/lightBlue';
 
 const App: React.FC = () => {
     const theme = createMuiTheme({
@@ -10,6 +11,9 @@ const App: React.FC = () => {
             fontFamily: ['Futura', 'Trebuchet MS', 'Arial', 'sans-serif'].join(
                 ','
             )
+        },
+        palette: {
+            primary: lightblue
         }
     });
     return (

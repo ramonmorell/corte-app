@@ -120,6 +120,15 @@ export default function JobsDone() {
                 bottom: -2,
                 left: 'calc(50% - 9px)',
                 transition: theme.transitions.create('opacity')
+            },
+            carousel_container: {
+                width: '70%',
+                position: 'relative',
+                left: '15%',
+                [theme.breakpoints.down('xs')]: {
+                    left: '0%',
+                    width: '100% !important' // Overrides inline-style
+                }
             }
         })
     );
@@ -176,7 +185,9 @@ export default function JobsDone() {
             </div>
             <hr></hr>
             {trabajos.length && (
-                <Carousel content={contentToCarousel}></Carousel>
+                <div className={classes.carousel_container}>
+                    <Carousel content={contentToCarousel}></Carousel>
+                </div>
             )}
         </Container>
     );
