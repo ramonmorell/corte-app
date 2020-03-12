@@ -1,6 +1,6 @@
 const sendMail = msg => {
     let data_js = {
-        access_token: 'w2dzrpbdoqo865q92ylh2wwg',
+        access_token: 'vyo24vczfjdrslvcij4v6xxf',
         subject: 'Contacto',
         text: msg
     };
