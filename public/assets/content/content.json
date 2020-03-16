@@ -29,19 +29,32 @@
     "trabajos": [
         {
             "texts": ["LETRAS Y ACABADOS"],
-            "images": ["mushu", "mushu", "mushu", "mushu"]
+            "images": ["letras_color_frontal_espejo"]
         },
         {
             "texts": ["ROTULACIÓN"],
-            "images": ["C_IMPORMOTOR", "C_FARMACIA"]
+            "images": [
+                "C_IMPORMOTOR",
+                "C_FARMACIA",
+                "rótulo grupo alberola",
+                "rótulo pvc varias alturas",
+                "rótulo sobre impresión imitación paleta",
+                "rótulo porexpan jimar",
+                "rótulo imitación madera"
+            ]
         },
         {
             "texts": ["DECORACIÓN EVENTOS"],
-            "images": ["decoracion", "decoracion", "decoracion", "decoracion"]
+            "images": [
+                "decoracion",
+                "decoración hall ADDA",
+                "decoración italiano",
+                "rótulo escenario ESIC"
+            ]
         },
         {
             "texts": ["OTROS"],
-            "images": ["mushu2", "mushu2", "mushu2", "mushu2"]
+            "images": ["tablas_surf_porexpan", "panes porexpan"]
         }
     ],
     "contacto": [
