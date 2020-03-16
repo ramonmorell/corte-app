@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core/styles';
 import sendMail from '../../email';
 import { TextField, Button } from '@material-ui/core';
-import { lightGreen, green } from '@material-ui/core/colors';
 import { ContactFormProps, FormData } from '../interfaces/interfaces';
 import SendIcon from '@material-ui/icons/Send';
 import DeleteIcon from '@material-ui/icons/Delete';
